@@ -4,7 +4,7 @@
     <h4 class="ui dividing header">add recipe</h4>
     <div class="field">
       <label for="name_id">name</label>
-      <input id="name" name="name_id" formControlName='name'>
+      <input id="name" name="name_id" formControlName='name' data-test="recipeName">
       <div *ngIf='recipe.get("name").errors?.required && recipe.get("name").touched' class='ui pointing red basic label'>
         a recipe must have a name of at least 2 characters long
       </div>
@@ -17,23 +17,23 @@
         <div [formGroupName]='i'>
           <div class='three fields'>
             <div class="field">
-              <input type="text" id="ingredient_amount" formControlName='amount'>
+              <input type="text" id="ingredient_amount" formControlName='amount' data-test="ingredientAmount">
             </div>
             <div class="field">
-              <select class='ui fluid dropdown' id="ingredient_unittype" formControlName='unit'>
+              <select class='ui fluid dropdown' id="ingredient_unittype" formControlName='unit' data-test="intgredientType">
                 <option *ngFor='let type of unitTypes' [value]='type'>
                   {{type}}
                 </option>
               </select>
             </div>
             <div class="field">
-              <input type="text" id="ingredient_name" formControlName='ingredientname'>
+              <input type="text" id="ingredient_name" formControlName='ingredientname' data-test="ingredientName">
             </div>
           </div>
         </div>
       </div>
     </div>
-    <button type='submit' class="ui positive right button">
+    <button type='submit' class="ui positive right button" data-test="addRecipeBtn">
       add recipe
     </button>
   </form>

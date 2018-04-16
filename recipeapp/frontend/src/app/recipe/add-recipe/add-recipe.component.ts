@@ -84,7 +84,9 @@ export class AddRecipeComponent implements OnInit {
       }
     }
     this._recipeDataService.addNewRecipe(recipe).subscribe(
-      () => {},
+      () => {
+        this.recipe.reset();
+      },
       (error: HttpErrorResponse) => {
         this.errorMsg = `Error ${error.status} while adding recipe for ${
           recipe.name
