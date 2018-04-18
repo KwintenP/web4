@@ -7,7 +7,7 @@ const webpackOptions = {
   module: {
     rules: [
       {
-        test: /\e2e.spec.ts$/,
+        test: /\.ts$/,
         exclude: [/node_modules/],
         use: [
           {
@@ -17,10 +17,10 @@ const webpackOptions = {
       }
     ]
   }
-}
+};
 
 const options = {
   webpackOptions
-}
+};
 
-module.exports = wp(options)
+module.exports = wp(options);

@@ -1,5 +1,24 @@
 /// <reference types="Cypress" />
+// Problem with typescript config in cypress, we need to define it once here
+// see: https://github.com/cypress-io/cypress/issues/1065
+declare namespace Cypress {
+    interface Chainable {
+        login(): void;
+        logout(): void;
+        addRecipe(recipe: any): void;
+        resetDb(): void;
+        register(username, password): void;
+        prepTest(): void;
+    }
+}
+
 describe('Login Page', () => {
+    beforeEach(() => {
+        cy.prepTest();
+        cy.register('Kwinten', 'testtesttest');
+        cy.logout();
+    });
+
    it('should go to the login page and try to login', () => {
        cy.visit('');
 

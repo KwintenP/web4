@@ -1,7 +1,9 @@
 {
   "extends": "../tsconfig.json",
   "include": [
-    "integration/**/*.spec.ts"
+    "integration/**/*.spec.ts",
+    "node_modules/cypress",
+    "cypress/support/command.def.ts"
   ],
   "exclude": [
     "src/**/*.spec.ts"

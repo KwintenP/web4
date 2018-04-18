@@ -1,4 +1,8 @@
 describe('add recipe', () => {
+    beforeEach(() => {
+        cy.prepTest();
+    });
+
     it('should be possible to add a recipe with one ingredient', () => {
         (cy as any).login();
 

@@ -1,6 +1,10 @@
+import '../support/commands';
+
 describe('Recipe list', () => {
     beforeEach(() => {
-        (cy as any).login();
+        cy.prepTest();
+        cy.login();
+
         const recipe1 = {
             name: 'Recipe name',
             ingredients: [
@@ -23,8 +27,9 @@ describe('Recipe list', () => {
             ],
             created: '2018-04-16T13:15:50.902Z'
         };
-        (cy as any).addRecipe(recipe1);
-        (cy as any).addRecipe(recipe2);
+
+        cy.addRecipe(recipe1);
+        cy.addRecipe(recipe2);
     });
 
     it('should show a list of recipes', () => {
@@ -32,7 +37,7 @@ describe('Recipe list', () => {
         cy.get('[data-test=recipe]').should('have.length', 2);
     });
 
-    it.only('should be possible to remove an recipe from the list', () => {
+    it('should be possible to remove an recipe from the list', () => {
         cy.visit('');
         cy.get('[data-test=removeRecipeBtn]').last().click();
         cy.get('[data-test=recipe]').should('have.length', 1);
